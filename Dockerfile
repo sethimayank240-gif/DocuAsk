@@ -18,4 +18,4 @@ ENV DATA_DIR=/tmp/data STATIC_DIR=/app/static PYTHONUNBUFFERED=1
 USER user
 EXPOSE 7860
 # One worker: documents are kept in a single JSON store.
-CMD ["gunicorn", "-b", "0.0.0.0:7860", "--workers", "1", "--threads", "4", "--timeout", "120", "app:create_app()"]
+CMD gunicorn -b 0.0.0.0:${PORT:-7860} --workers 1 --threads 4 --timeout 120 "app:create_app()"
