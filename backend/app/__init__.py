@@ -1,4 +1,7 @@
-from flask import Flask
+import os
+from pathlib import Path
+
+from flask import Flask, send_from_directory
 
 from .config import Config
 from .routes import api
@@ -12,6 +15,16 @@ def create_app(config=Config) -> Flask:
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     app.extensions["store"] = DocumentStore(config)
     app.register_blueprint(api)
+
+    # Optional: serve the built React app (used by the single-container online deployment).
+    static_dir = Path(os.getenv("STATIC_DIR", "")) if os.getenv("STATIC_DIR") else None
+    if static_dir and static_dir.is_dir():
+        @app.route("/", defaults={"path": ""})
+        @app.route("/<path:path>")
+        def spa(path):
+            if path and (static_dir / path).is_file():
+                return send_from_directory(static_dir, path)
+            return send_from_directory(static_dir, "index.html")
 
     @app.after_request
     def cors(resp):  # minimal CORS so the React dev server can call the API

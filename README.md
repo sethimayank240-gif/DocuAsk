@@ -1,3 +1,13 @@
+---
+title: DocuAsk
+emoji: 📄
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # DocuAsk - RAG Document Question-Answering Assistant
 
 Upload PDF/TXT documents, ask questions in plain English, and get answers with the exact
@@ -15,10 +25,10 @@ rag-doc-qa/
 │   │   ├── llm.py           OpenAI-compatible LLM call + fallback when no key / API down
 │   │   ├── store.py         documents, chunks, history (JSON persistence)
 │   │   └── routes.py        /api endpoints
-│   ├── tests/               15 pytest tests (chunking, retrieval, API, LLM mock, PDF)
+│   ├── tests/               19 pytest tests (chunking, retrieval, API, LLM mock, PDF)
 │   ├── run.py  requirements.txt  .env.example
 ├── frontend/                React + Vite single-page app
-│   └── src/ (App.jsx, api.js, components/DocumentPanel, ChatPanel, Message, styles.css)
+│   └── src/ (App.jsx, api.js, highlight.js, components/DocumentPanel, ChatPanel, Message, styles.css)
 └── experiments/             run_experiment.py - chunk size x retrieval study for the paper
 ```
 
@@ -63,7 +73,9 @@ still works and shows the best-matching passage.
 | POST | /api/documents | upload (multipart field `file`, .pdf/.txt, max 10 MB) |
 | DELETE | /api/documents/{id} | remove a document |
 | POST | /api/ask | `{"question": "...", "top_k": 4}` -> answer, sources, latency |
-| GET | /api/history | last 50 questions |
+| GET | /api/history | last 50 questions (newest first) |
+| DELETE | /api/history | clear the question history |
+| GET | /api/suggestions | example questions built from the uploaded documents |
 
 ## Experiment for the research paper
 
