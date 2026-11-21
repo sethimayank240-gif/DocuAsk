@@ -1,0 +1,41 @@
+question,answer_text,type
+Which initialization is used for ReLU activations?,for relu/leaky relu activations,L
+Which weight initialisation suits networks that use sigmoid or tanh?,for sigmoid/tanh activations,P
+What does dropout do during training?,randomly deactivate neurons during training,L
+How does early stopping decide when to halt training?,stop training when validation loss stops improving,P
+Which loss function is used for regression problems?,mean squared error (mse),P
+Which optimizer is the most popular choice?,adam optimizer (most commonly used),P
+What does eta stand for in the weight update formula?,is the learning rate,L
+How can exploding gradients be controlled?,gradient clipping,P
+What is the solution for underfitting?,"add layers or neurons, train longer",L
+"According to the problems table, what causes overfitting?",model too complex for data,P
+Which methods are suggested for hyperparameter tuning?,"grid search, random search, or bayesian optimization",L
+Why is optimising the loss surface of a deep network hard?,many local minima and saddle points,P
+Which XAI techniques improve interpretability?,"explainable ai (xai) techniques (e.g., lime, shap)",L
+What happens to a network that has no activation functions?,collapse into a single linear function,P
+Which activation function squeezes its output between 0 and 1?,compresses the output into a range between 0 and 1,P
+What range of values does tanh output?,outputs values between -1 and 1,L
+Why is a linear activation not useful in hidden layers?,doesn't introduce non-linearity,P
+Which method gives a more reliable estimate of model performance?,k-fold cross-validation,L
+What can you do when you have limited training data?,use a pre-trained model as a starting point,P
+Which output activation is suggested for regression versus classification?,"linear for regression, softmax or sigmoid for classification",L
+When is a hyperparameter value fixed?,set before the model start training,P
+Which quantities are the parameters of a neural network?,weights and biases in neural networks,P
+What is a hyperparameter example in k-means?,number of clusters(k) in k means clustering,P
+What is greedy layer-wise training?,pre-training each hidden layer one at a time,L
+Which models can be used to pre-train a layer without labels?,autoencoder or restricted boltzmann machine,P
+What is a drawback of pre-training in terms of cost?,adds a significant computational cost,L
+Which part of an RNN stores information about the sequence so far?,which remembers specific information about a sequence,P
+How are errors passed back through the unrolled network?,errors are propagated across time steps,P
+Give an example of a one-to-many RNN.,image captioning a single image can be used as input,L
+Which RNN type fits sentiment analysis?,many-to-one rnn receives a sequence of inputs and generates a single output,P
+Which RNN type is used in language translation?,in language translation task a sequence of words in one language,L
+Why are vanilla RNNs weak on long sequences?,limited by the vanishing gradient problem,P
+What does the forget gate of an LSTM do?,decides what past information should be discarded,L
+How does a GRU simplify the LSTM design?,combining the input and forget gates into a single update gate,P
+Which gates does a GRU use?,two gates (update and reset),L
+What is a BiLSTM built from?,two separate lstm layers,P
+Which tasks suit bidirectional RNNs?,named entity recognition and question answering,P
+Which forecasting examples are given for RNNs?,stock market predictions and weather forecasting,P
+Why are GPUs or TPUs needed for deep networks?,large models require powerful hardware (gpus/tpus),L
+What problem arises when gradients shrink in deep networks?,early layers learn very slowly or not at all,P

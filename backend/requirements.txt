@@ -1,0 +1,10 @@
+Flask>=3.0
+pypdf>=4.0
+scikit-learn>=1.3
+numpy>=1.24
+requests>=2.31
+python-dotenv>=1.0
+gunicorn>=21.2          # for deployment (Linux/macOS); on Windows use "python run.py"
+pytest>=8.0
+# Optional (better semantic search, ~100 MB download on first use):
+# sentence-transformers>=2.7
